@@ -4,7 +4,7 @@ case node[:platform]
 when 'debian', 'ubuntu'
   file = '/usr/local/bin/aws'
   install_zip_cmd = 'apt-get -y install unzip'
-  download_cmd = 'curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip -o /tmp/awscliv2.zip'
+  download_cmd = 'curl -s https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscliv2.zip'
   unzip_cmd = 'unzip /tmp/awscliv2.zip -d /tmp'
   cmd = '/tmp/aws/install'
   completion_file = '/etc/bash_completion.d/aws'
