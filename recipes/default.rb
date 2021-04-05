@@ -3,7 +3,16 @@
 case node[:platform]
 when 'debian', 'ubuntu'
   file = '/usr/local/bin/aws'
-  cmd = 'apt-get install -y python-pip && pip install awscli'
+  install_zip_cmd = 'apt-get install unzip'
+  command install_zip_cmd
+
+  download_cmd = 'curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip -o awscliv2.zip'
+  command download_cmd
+
+  unzip_cmd = 'unzip awscliv2.zip'
+  command unzip_cmd
+
+  cmd = 'sudo ./aws/install'
   completion_file = '/etc/bash_completion.d/aws'
 when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
   file = '/usr/bin/aws'
