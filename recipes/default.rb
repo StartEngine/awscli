@@ -12,6 +12,7 @@ when 'debian', 'ubuntu'
     unzip awscliv2.zip
     ./tmp/aws/install
     EOH
+  end
   cmd = 'echo done'
 end
 when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
