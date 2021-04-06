@@ -14,6 +14,7 @@ when 'debian', 'ubuntu'
     EOH
   end
   cmd = 'echo done'
+  completion_file = '/etc/bash_completion.d/aws'
 when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
   file = '/usr/bin/aws'
   cmd = 'yum -y install python-pip && pip install awscli'
