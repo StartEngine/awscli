@@ -11,7 +11,7 @@ when 'debian', 'ubuntu'
     apt-get -y install unzip
     unzip awscliv2.zip
     ./tmp/aws/install
-    EOH
+EOH
   end
   cmd = 'echo done'
 end
