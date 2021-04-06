@@ -11,10 +11,9 @@ when 'debian', 'ubuntu'
     apt-get -y install unzip
     unzip awscliv2.zip
     ./tmp/aws/install
-EOH
+    EOH
   end
   cmd = 'echo done'
-end
 when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
   file = '/usr/bin/aws'
   cmd = 'yum -y install python-pip && pip install awscli'
