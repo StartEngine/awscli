@@ -3,20 +3,24 @@
 case node[:platform]
 when 'debian', 'ubuntu'
   file = '/usr/local/bin/aws'
-  install_zip_cmd = 'sudo apt-get -y install unzip'
-  download_cmd = 'curl -s https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscliv2.zip'
-  unzip_cmd = 'unzip /tmp/awscliv2.zip -d /tmp'
-  cmd = 'sudo /tmp/aws/install'
+  bash 'install_awscli' do
+    user 'root'
+    cwd '/tmp'
+    code <<-EOH
+    curl -s https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscliv2.zip
+    apt-get -y install unzip
+    unzip awscliv2.zip
+    ./tmp/aws/install
+    EOH
+  cmd = 'echo done'
   completion_file = '/etc/bash_completion.d/aws'
+end
 when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
   file = '/usr/bin/aws'
   cmd = 'yum -y install python-pip && pip install awscli'
 end
 r = execute 'install awscli' do
   not_if { ::File.exist?(file) }
-  command install_zip_cmd
-  command download_cmd
-  command unzip_cmd
   command cmd
   if node[:awscli][:compile_time]
     action :nothing
