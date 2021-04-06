@@ -13,7 +13,6 @@ when 'debian', 'ubuntu'
     ./tmp/aws/install
     EOH
   cmd = 'echo done'
-  completion_file = '/etc/bash_completion.d/aws'
 end
 when 'redhat', 'centos', 'fedora', 'amazon', 'scientific'
   file = '/usr/bin/aws'
