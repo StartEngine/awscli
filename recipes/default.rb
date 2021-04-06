@@ -12,7 +12,7 @@ when 'debian', 'ubuntu'
     code <<-EOH
     curl -s https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscliv2.zip
     unzip awscliv2.zip
-    ./tmp/aws/install
+    /tmp/aws/install
     EOH
   end
   cmd = 'echo done'
