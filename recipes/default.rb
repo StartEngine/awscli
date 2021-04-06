@@ -3,12 +3,14 @@
 case node[:platform]
 when 'debian', 'ubuntu'
   file = '/usr/local/bin/aws'
+  apt_package 'unzip' do
+    action :install
+  end
   bash 'install_awscli' do
     user 'root'
     cwd '/tmp'
     code <<-EOH
     curl -s https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o /tmp/awscliv2.zip
-    apt-get -y install unzip
     unzip awscliv2.zip
     ./tmp/aws/install
     EOH
